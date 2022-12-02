@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NavBarChild from './NavBarChild'
+import css from './css/NavBarForm.module.css'
 
 export class NavBarForm extends Component {
     constructor(props) {
@@ -11,7 +11,7 @@ export class NavBarForm extends Component {
     }
 
     handleClick() {
-      this.setState((prevState, prevProps) => {
+      this.setState((prevState) => {
           console.log('prev state:', prevState.isLoggedIn)
           
           return {
@@ -22,7 +22,7 @@ export class NavBarForm extends Component {
 
   render() {
     return (
-      <div className='css.NavBar'>
+      <div className={css.NavBar}>
         <h1>My Gallery</h1>
         <button onClick={()=> this.handleClick()}>Login</button>
         <form>{this.state.isLoggedIn ? (
@@ -36,7 +36,7 @@ export class NavBarForm extends Component {
                 </label>
                 <button onClick={()=> this.handleClick()}>Submit</button>
                 </div>
-            ): (<p>Not signed in</p> )}</form>
+            ): (<p></p> )}</form>
       </div>
     )
   }
