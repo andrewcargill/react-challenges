@@ -10,32 +10,38 @@ export class Content extends Component {
     super(props)
   
     this.state = {
-       isLoaded: false
+       isLoaded: false,
+       posts: [],
     }
   }
   
-  getData() {
-    // console.log("Parent - getData()")
-    setTimeout(() => {
-        // console.log("Parent - setTimeout");
+  componentDidMount() {
+    setTimeout(()=>{
         this.setState({
-            isLoaded: true
+            isLoaded: true,
+            posts: savedPosts,
         })
     }, 2000)
 }
 
-  componentDidMount() {
-      // console.log("Parent - componentDidMount()")
-      this.getData()
-  }
 
 //Render via PostItem.js    
   render() {
     return (
-      <div>
+      <div className={css.Content}>
          
-        <div className={css.Content}>
+        <div className={css.TitleBar} >
             <h1>My Photos</h1>
+            <form>
+              <label htmlFor='searchinput'>Search</label>
+              <input 
+              type='search' 
+              id='searchinput' 
+              placeholder='By Author'
+              onChange={(e) => this.handleChange(e)}
+              />
+              <h4>posts found {this.state.posts.length}</h4>
+             </form>
         </div>
         <div className={css.SearchResults}>
           {
