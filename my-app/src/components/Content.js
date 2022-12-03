@@ -24,6 +24,16 @@ export class Content extends Component {
     }, 2000)
 }
 
+handleChange = (e) => {
+  const name = e.target.value.toLowerCase();
+  const filteredPosts = savedPosts.filter((post)=>{
+      return post.name.toLowerCase().includes(name);
+  })
+  
+  this.setState({
+      posts: filteredPosts
+  })
+}
 
 //Render via PostItem.js    
   render() {
